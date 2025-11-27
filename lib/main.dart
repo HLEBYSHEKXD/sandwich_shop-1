@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/models/cart.dart';
+import 'package:sandwich_shop/views/cart_screen.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
@@ -83,6 +84,23 @@ class _OrderScreenState extends State<OrderScreen> {
           'Added $_quantity $sizeText ${sandwich.name} sandwich(es) on ${_selectedBreadType.name} bread to cart';
 
       debugPrint(confirmationMessage);
+
+      // Show SnackBar popup message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(confirmationMessage),
+          duration: const Duration(seconds: 3),
+          behavior: SnackBarBehavior.floating,
+          action: SnackBarAction(
+            label: 'Undo',
+            onPressed: () {
+              setState(() {
+                _cart.remove(sandwich);
+              });
+            },
+          ),
+        ),
+      );
     }
   }
 
@@ -258,9 +276,30 @@ class _OrderScreenState extends State<OrderScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            padding: const EdgeInsets.symmetric(vertical: 12),
+          ),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => CartScreen(cart: _cart),
+              ),
+            );
+          },
+          child: const Text(
+            'View Cart',
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        ),
+      ),
     );
   }
 }
+
 class StyledButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final IconData icon;

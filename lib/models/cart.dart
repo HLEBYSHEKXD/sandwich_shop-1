@@ -31,13 +31,10 @@ class Cart {
 
   void add(Sandwich sandwich, {int quantity = 1}) {
     if (quantity <= 0) return;
-    final existing = _items.firstWhere(
-      (it) => _sameSandwich(it.sandwich, sandwich),
-      orElse: () => null as CartItem,
-    );
+    final existingIndex = _items.indexWhere((it) => _sameSandwich(it.sandwich, sandwich));
 
-    if (existing != null) {
-      existing.quantity += quantity;
+    if (existingIndex != -1) {
+      _items[existingIndex].quantity += quantity;
     } else {
       _items.add(CartItem(sandwich: sandwich, quantity: quantity));
     }
