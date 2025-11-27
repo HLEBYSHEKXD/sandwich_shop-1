@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:sandwich_shop/views/app_styles.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/models/cart.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
+Future<List<Map<String, dynamic>>> loadSandwichData() async {
+  final String jsonString = await rootBundle.loadString('assets/sandwiches.json');
+  final Map<String, dynamic> jsonData = json.decode(jsonString);
+  return List<Map<String, dynamic>>.from(jsonData['sandwiches']);
+}
 
 void main() {
   runApp(const App());
