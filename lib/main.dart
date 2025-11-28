@@ -86,19 +86,13 @@ class _OrderScreenState extends State<OrderScreen> {
       debugPrint(confirmationMessage);
 
       // Show SnackBar popup message
+      ScaffoldMessenger.of(context).clearSnackBars();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(confirmationMessage),
           duration: const Duration(seconds: 3),
           behavior: SnackBarBehavior.floating,
-          action: SnackBarAction(
-            label: 'Undo',
-            onPressed: () {
-              setState(() {
-                _cart.remove(sandwich);
-              });
-            },
-          ),
+          showCloseIcon: true,
         ),
       );
     }
