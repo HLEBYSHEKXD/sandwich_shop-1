@@ -3,15 +3,19 @@ import 'package:sandwich_shop/repositories/pricing_repository.dart';
 
 class Cart {
   final Map<Sandwich, int> _items = {};
+  static const int maxQuantityPerItem = 99;
 
   // Returns a read-only copy of the items and their quantities
   Map<Sandwich, int> get items => Map.unmodifiable(_items);
 
   void add(Sandwich sandwich, {int quantity = 1}) {
+    if (quantity <= 0) return;
+    
     if (_items.containsKey(sandwich)) {
-      _items[sandwich] = _items[sandwich]! + quantity;
+      final newQuantity = _items[sandwich]! + quantity;
+      _items[sandwich] = newQuantity > maxQuantityPerItem ? maxQuantityPerItem : newQuantity;
     } else {
-      _items[sandwich] = quantity;
+      _items[sandwich] = quantity > maxQuantityPerItem ? maxQuantityPerItem : quantity;
     }
   }
 
@@ -24,6 +28,22 @@ class Cart {
         _items.remove(sandwich);
       }
     }
+  }
+
+  // New method: Update quantity to a specific value
+  void updateQuantity(Sandwich sandwich, int quantity) {
+    if (quantity <= 0) {
+      _items.remove(sandwich);
+    } else if (quantity > maxQuantityPerItem) {
+      _items[sandwich] = maxQuantityPerItem;
+    } else {
+      _items[sandwich] = quantity;
+    }
+  }
+
+  // New method: Remove item completely from cart
+  void removeItem(Sandwich sandwich) {
+    _items.remove(sandwich);
   }
 
   void clear() {
@@ -43,6 +63,16 @@ class Cart {
     }
 
     return total;
+  }
+
+  // New method: Get price for a specific item in the cart
+  double getItemPrice(Sandwich sandwich) {
+    final pricingRepository = PricingRepository();
+    final quantity = getQuantity(sandwich);
+    return pricingRepository.calculatePrice(
+      quantity: quantity,
+      isFootlong: sandwich.isFootlong,
+    );
   }
 
   bool get isEmpty => _items.isEmpty;
