@@ -46,3 +46,46 @@ The Cart Modification Feature allows users to manage their sandwich selections w
 - The feature is consistent with existing Cart model methods.
 - The feature is tested for usability, ensuring a smooth user experience.
 - Documentation is updated to reflect the new functionality and usage instructions.
+
+---
+
+# Requirements Document for Profile/Sign-In Screen Feature
+
+## 1. Feature Description
+The Profile/Sign-In Screen allows users to enter and view their personal details within the Flutter Sandwich Shop application. This screen provides a simple form for users to input their name and email address, and displays these details back to the user. No authentication or data persistence is required at this stage; the goal is to establish the UI and navigation flow.
+
+## 2. User Stories
+
+### User Story 1: Enter Profile Details
+**As a** user,  
+**I want** to enter my name and email address,  
+**So that** I can personalize my experience in the app.
+
+#### Acceptance Criteria:
+- Users can enter their name and email in text fields.
+- Users can submit the form to view their entered details.
+
+### User Story 2: View Profile Details
+**As a** user,  
+**I want** to see my entered profile information,  
+**So that** I can confirm my details are correct.
+
+#### Acceptance Criteria:
+- After submitting, the screen displays the user's name and email.
+- The user can return to the order screen.
+
+### User Story 3: Navigation to Profile Screen
+**As a** user,  
+**I want** to access the profile/sign-in screen from the order screen,  
+**So that** I can easily update or view my details.
+
+#### Acceptance Criteria:
+- A link or button is present at the bottom of the order screen to navigate to the profile/sign-in screen.
+- Navigation uses named routes for consistency.
+
+## 3. Acceptance Criteria for Feature Completion
+- The profile/sign-in screen is accessible from the order screen.
+- Users can enter and view their name and email.
+- No authentication or data persistence is required.
+- The UI is clear and user-friendly.
+- Documentation is updated to reflect the new functionality.
