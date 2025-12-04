@@ -5,6 +5,7 @@ import 'package:sandwich_shop/models/cart.dart';
 import 'package:sandwich_shop/models/sandwich.dart';
 import 'package:sandwich_shop/widgets/cart_item_widget.dart';
 import 'package:sandwich_shop/views/checkout_screen.dart';
+import 'package:sandwich_shop/views/app_drawer.dart';
 
 class CartScreen extends StatefulWidget {
   final Cart cart;
@@ -133,6 +134,7 @@ class _CartScreenState extends State<CartScreen> {
           style: heading1,
         ),
       ),
+      drawer: const AppDrawer(),
       body: widget.cart.isEmpty
           ? Center(
               child: Column(

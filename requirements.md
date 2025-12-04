@@ -89,3 +89,36 @@ The Profile/Sign-In Screen allows users to enter and view their personal details
 - No authentication or data persistence is required.
 - The UI is clear and user-friendly.
 - Documentation is updated to reflect the new functionality.
+
+---
+
+# Requirements Document for Drawer Navigation Feature
+
+## 1. Feature Description
+The Drawer Navigation Feature adds a navigation drawer to the Flutter Sandwich Shop application. The drawer provides quick access to major screens such as Home (Order), Cart, About Us, and Profile/Sign-In. This improves usability and allows users to switch between sections of the app efficiently.
+
+## 2. User Stories
+
+### User Story 1: Access Drawer Menu
+**As a** user,  
+**I want** to open a navigation drawer from any main screen,  
+**So that** I can quickly access different parts of the app.
+
+#### Acceptance Criteria:
+- A Drawer menu is accessible from the app bar on major screens.
+- The Drawer contains links to Home, Cart, About Us, and Profile/Sign-In.
+
+### User Story 2: Navigate Using Drawer
+**As a** user,  
+**I want** to tap items in the drawer to navigate to different screens,  
+**So that** I can move around the app easily.
+
+#### Acceptance Criteria:
+- Tapping a drawer item navigates to the corresponding screen.
+- The drawer closes automatically after navigation.
+
+## 3. Acceptance Criteria for Feature Completion
+- Drawer is present and functional on major screens.
+- All navigation links work as expected.
+- The UI is consistent and user-friendly.
+- Documentation is updated to reflect the new navigation feature.

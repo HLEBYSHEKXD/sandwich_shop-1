@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sandwich_shop/views/order_screen.dart';
 import 'package:sandwich_shop/views/about_screen.dart';
 import 'package:sandwich_shop/views/profile_screen.dart';
+import 'package:sandwich_shop/views/cart_screen.dart';
+import 'package:sandwich_shop/models/cart.dart';
 
 void main() {
   runApp(const App());
@@ -21,6 +23,8 @@ class App extends StatelessWidget {
             return MaterialPageRoute(builder: (_) => const AboutScreen());
           case '/profile':
             return MaterialPageRoute(builder: (_) => const ProfileScreen());
+          case '/cart':
+            return MaterialPageRoute(builder: (_) => CartScreen(cart: Cart()));
           default:
             return MaterialPageRoute(builder: (_) => const OrderScreen(maxQuantity: 5));
         }
