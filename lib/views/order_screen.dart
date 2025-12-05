@@ -124,16 +124,15 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            height: 100,
-            child: Image.asset('assets/images/logo.png'),
-          ),
-        ),
-        title: const Text(
-          'Sandwich Counter',
-          style: heading1,
+        title: Row(
+          children: [
+            SizedBox(
+              height: 40,
+              child: Image.asset('assets/images/logo.png'),
+            ),
+            const SizedBox(width: 10),
+            const Text('Order', style: heading1),
+          ],
         ),
       ),
       drawer: const AppDrawer(),
